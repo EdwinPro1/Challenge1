@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="C:\Users\gonzaleze\Documents\JS\Challenge1\style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+	<title>Encriptador</title>
+</head>
+<body>
+	<header>
+		<img class="logo" src="C:\Users\gonzaleze\Documents\JS\Challenge1\Imagenes\logo.png" alt="Logo de Alura">
+	</header>
+	<main>
+		<section>
+			<textarea class="text-area" cols="30" rows="10" placeholder="Ingrese el texto aquí"></textarea>
+			<div>
+				<h6 class="informacion">
+					Solo letras minúsculas y sin acentos
+				</h6>
+			</div>
+			<div class="botones">
+				<button class="btn-encriptar"> Encriptar </button>
+				<button class="btn-desencriptar"> Desencriptar</button>
+			</div>
+		</section>
+		<section>
+			<textarea class="mensaje" cols="20" rows="10" ></textarea>
+			<div>
+				<button class="btn-copiar">Copiar</button>
+			</div>
+		</section>
+	</main>
+	<script>
+		//Definición de variables
+		const AreaDeTexto = document.querySelector(".text-area");//selecciona lo que está en la etiqueta .text-area para agregarla a una constante, después a esa constante se le debe asigar a una variable para poder realizar el remplazo con replaceAll
+		const AreaDeEncriptado = document.querySelector(".mensaje");
+
+		//Funcion de encriptar
+		function encriptar(){
+			
+			var EncriptarMensaje = AreaDeTexto.value; //toma el valor del cuadro de texto y asignalo a la variable EncriptarMensaje
+			var MensajeEncriptado= EncriptarMensaje.replaceAll("e","enter").replaceAll("i","imes").replaceAll("a","ai").replaceAll("o","ober".replaceAll("u","ufat"));
+			
+			 AreaDeEncriptado.value=MensajeEncriptado; //toma el valor de la variable y mandalo al cuadro de texto
+			 
+		}
+
+		//Funcion desencriptar
+		function desencriptar(){
+			var EncriptarMensaje = AreaDeTexto.value; //toma el valor del cuadro de texto y asignalo a la variable EncriptarMensaje
+			var MensajeEncriptado= EncriptarMensaje.replaceAll("enter","e").replaceAll("imes","i").replaceAll("ai","a").replaceAll("ober","o".replaceAll("ufat","u"));
+			
+			 AreaDeEncriptado.value=MensajeEncriptado; //toma el valor de la variable y mandalo al cuadro de texto
+		}
+			
+
+		//Funcion copiar
+		function copiar(){
+			var MensajeEncriptado = AreaDeEncriptado.value;
+  			navigator.clipboard.writeText(MensajeEncriptado);//copiar el texto del mensaje encriptado
+			
+		}
+
+		var button = document.querySelector("button.btn-encriptar");
+		button.onclick = encriptar;
+		var button = document.querySelector("button.btn-desencriptar");
+		button.onclick = desencriptar;
+		var button = document.querySelector("button.btn-copiar");
+		button.onclick = copiar;
+	</script>
+</body>
+</html>
